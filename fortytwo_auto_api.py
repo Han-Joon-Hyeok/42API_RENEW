@@ -59,7 +59,8 @@ class fortytwo_auto_keys:
         options = Options()
         options.headless = True
         if use_chrome:
-            self.browser = webdriver.Chrome(ChromeDriverManager().install())
+            self.browser = webdriver.Chrome(options=options)
+            # self.browser = webdriver.Chrome(ChromeDriverManager().install())
         else:
             self.browser = webdriver.Firefox(options=options)
 
