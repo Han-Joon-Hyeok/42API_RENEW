@@ -11,6 +11,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException
+from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 from datetime import datetime
 import pyotp
@@ -58,7 +59,7 @@ class fortytwo_auto_keys:
         options = Options()
         options.headless = True
         if use_chrome:
-            self.browser = webdriver.Chrome(options=options)
+            self.browser = webdriver.Chrome(ChromeDriverManager().install())
         else:
             self.browser = webdriver.Firefox(options=options)
 
