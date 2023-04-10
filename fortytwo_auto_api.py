@@ -81,13 +81,17 @@ class fortytwo_auto_keys:
         """Handle fortytwo intra login
         Fill field login/password and click on login button
         """
-        login_field = self.browser.find_element(By.NAME, "user[login]")
-        password_field = self.browser.find_element(By.NAME, "user[password]")
+        sign_in_button = self.browser.find_element(By.XPATH, "//a[@class='btn btn-login-student']")
+        sign_in_button.click()
+        print(self.browser.page_source)
+        sleep(1)
+        login_field = self.browser.find_element(By.NAME, "username")
+        password_field = self.browser.find_element(By.NAME, "password")
         login_field.clear()
         password_field.clear()
         login_field.send_keys(self.login)
         password_field.send_keys(self.password)
-        self.browser.find_element(By.NAME, "commit").click()
+        self.browser.find_element(By.NAME, "login").click()
 
     def handle_totp(self) -> None:
         """Handle TOTP login
