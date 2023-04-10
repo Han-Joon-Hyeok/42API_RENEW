@@ -83,8 +83,6 @@ class fortytwo_auto_keys:
         """
         sign_in_button = self.browser.find_element(By.XPATH, "//a[@class='btn btn-login-student']")
         sign_in_button.click()
-        print(self.browser.page_source)
-        sleep(1)
         login_field = self.browser.find_element(By.NAME, "username")
         password_field = self.browser.find_element(By.NAME, "password")
         login_field.clear()
