@@ -81,8 +81,10 @@ class fortytwo_auto_keys:
         """Handle fortytwo intra login
         Fill field login/password and click on login button
         """
+        """Removed because of new login page
         sign_in_button = self.browser.find_element(By.XPATH, "//a[@class='btn btn-login-student']")
         sign_in_button.click()
+        """
         login_field = self.browser.find_element(By.NAME, "username")
         password_field = self.browser.find_element(By.NAME, "password")
         login_field.clear()
