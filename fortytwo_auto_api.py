@@ -190,6 +190,17 @@ class fortytwo_auto_keys:
             self.replace_button.click()
         sleep(2)
 
+    def remove_modal(self):
+        try:
+            modal = self.browser.find_element(By.CLASS_NAME, "modal-backdrop")
+            while modal:
+                logging.info("find modal")
+                modal.click()
+                sleep(0.5)
+                modal = self.browser.find_element(By.CLASS_NAME, "modal-backdrop")
+        except NoSuchElementException:
+            logging.info("modal is all removed")
+
     def auto(self) -> None:
         """Automatic operations for defaults operation.
         Will do:
@@ -202,6 +213,7 @@ class fortytwo_auto_keys:
         self.handle_login()
         while "Otp" in self.browser.title:
             self.handle_totp()
+        self.remove_modal()
         if self.force_renew or self.__time_to_renew():
             self.generate_new_secret()
         self.__parse_keys()
