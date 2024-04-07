@@ -2,8 +2,12 @@ import logging
 
 import secret
 
+from dotenv import dotenv_values
+
+config = dotenv_values(".env")
+
 def save_secret_values_in_env_file(**kwargs):
-	API_SECRET_SAVED_FILE = "{}/{}".format(secret.config["API_SECRET_FILE_DIRECTORY"], secret.config["API_SECRET_FILE_NAME"])
+	API_SECRET_SAVED_FILE = "{}/{}".format(env.config["API_SECRET_FILE_DIRECTORY"], env.config["API_SECRET_FILE_NAME"])
 
 	api_uid = kwargs.get("uid")
 	api_secret = kwargs.get("secret")
