@@ -7,11 +7,11 @@ This class can also handle auto-regenerate and auto-replace your
 current secret
 """
 
+import logging
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException
-from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 from datetime import datetime
 import pyotp
@@ -23,7 +23,6 @@ __version__ = "1.0.0"
 __maintainer__ = "Joonhyeok Han"
 __email__ = "joonhan@student.42.kr"
 __status__ = "Production"
-
 
 class fortytwo_auto_keys:
     def __init__(
@@ -92,6 +91,7 @@ class fortytwo_auto_keys:
         login_field.send_keys(self.login)
         password_field.send_keys(self.password)
         self.browser.find_element(By.NAME, "login").click()
+        logging.info("Login successful")
 
     def handle_totp(self) -> None:
         """Handle TOTP login
@@ -176,6 +176,7 @@ class fortytwo_auto_keys:
         for key in keys:
             type = key.get_attribute("data-copy").split('-')[2]
             self.__keys[type] = key.get_attribute("data-clipboard-text")
+        logging.info("Successfully API Keys parsed")
 
     def generate_new_secret(self) -> None:
         """Generate new secret.
@@ -189,17 +190,20 @@ class fortytwo_auto_keys:
         if self.replace_button:
             self.replace_button.click()
         sleep(2)
+        logging.info("New secret generated")
 
     def remove_modal(self):
+        count = 0
         try:
             modal = self.browser.find_element(By.CLASS_NAME, "modal-backdrop")
             while modal:
-                logging.info("find modal")
+                logging.info("find modal(count: {})".format(count))
                 modal.click()
                 sleep(0.5)
                 modal = self.browser.find_element(By.CLASS_NAME, "modal-backdrop")
+                count += 1
         except NoSuchElementException:
-            logging.info("modal is all removed")
+            logging.info("modal is all removed(total count: {})".format(count))
 
     def auto(self) -> None:
         """Automatic operations for defaults operation.

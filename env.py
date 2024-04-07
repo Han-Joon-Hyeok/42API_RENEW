@@ -1,3 +1,5 @@
+import logging
+
 import secret
 
 def save_secret_values_in_env_file(**kwargs):
@@ -8,3 +10,5 @@ def save_secret_values_in_env_file(**kwargs):
 	with open(API_SECRET_SAVED_FILE, "w+") as f:
 		f.write(f"PAYLOAD_CLIENT_ID={api_uid}\n")
 		f.write(f"PAYLOAD_CLIENT_SECRET={api_secret}\n")
+
+	logging.info(f"Successfully API secret saved in {API_SECRET_SAVED_FILE}")
