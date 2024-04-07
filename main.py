@@ -17,7 +17,7 @@ def main():
 	try:
 		log.setup_logger()
 		fortytwo.auto()
-		env.save_secret_values_in_env_file()
+		env.save_secret_values_in_env_file(**fortytwo.keys)
 		
 	except Exception as e:
 		logging.error(traceback.format_exc())
