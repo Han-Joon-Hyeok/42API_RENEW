@@ -20,7 +20,6 @@ def main():
 		env.save_secret_values_in_env_file()
 		
 	except Exception as e:
-		logging.error(e)
 		logging.error(traceback.format_exc())
 
 if __name__ == "__main__":
