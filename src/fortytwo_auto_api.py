@@ -8,6 +8,7 @@ current secret
 """
 
 import logging
+from selenium_stealth import stealth
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -55,14 +56,25 @@ class fortytwo_auto_keys:
         self.day_before_renew = day_before_renew
         self.__keys = dict()
 
-        options = Options()
-        options.headless = True
+        options = webdriver.ChromeOptions()
+        options.add_argument("--headless")
+        options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        options.add_experimental_option('useAutomationExtension', False)
+
         if use_chrome:
             self.browser = webdriver.Chrome(options=options)
             # self.browser = webdriver.Chrome(ChromeDriverManager().install())
         else:
             self.browser = webdriver.Firefox(options=options)
 
+        stealth(self.browser,
+                languages=["en-US", "en"],
+                vendor="Google Inc.",
+                platform="Win32",
+                webgl_vendor="Intel Inc.",
+                renderer="Intel Iris OpenGL Engine",
+                fix_hairline=True,
+        )
         self.browser.get(self.app_url)
 
     def __del__(self):
