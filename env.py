@@ -1,6 +1,6 @@
 import logging
 
-import secret
+import env
 
 from dotenv import dotenv_values
 

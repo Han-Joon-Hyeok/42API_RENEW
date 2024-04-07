@@ -1,7 +1,7 @@
 import os
 import logging
 
-import secret
+import env
 
 log_file_path = "{}/{}".format(env.config["LOG_FILE_DIRECTORY"], env.config["LOG_FILE_NAME"])
 
