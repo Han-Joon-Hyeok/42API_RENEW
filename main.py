@@ -1,8 +1,3 @@
-#!/usr/bin/env python3
-"""Sample code
-Get API Keys and write this to an env file
-"""
-
 from fortytwo_auto_api import fortytwo_auto_keys
 import secret
 
@@ -10,7 +5,7 @@ fortytwo = fortytwo_auto_keys(
 	login=secret.LOGIN_42,
 	password=secret.PASSWORD_42,
 	app_url=secret.APP_URL,
-	otp_secret=secret.OTPSECRET_42,
+	otp_secret=secret.OTP_SECRET_42,
 )
 
 fortytwo.auto()
