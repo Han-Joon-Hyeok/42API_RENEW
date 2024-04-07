@@ -4,6 +4,7 @@ import traceback
 from fortytwo_auto_api import fortytwo_auto_keys
 import log
 import env
+import github_issue
 
 fortytwo = fortytwo_auto_keys(
 	login=env.config["LOGIN_42"],
@@ -20,6 +21,7 @@ def main():
 		
 	except Exception as e:
 		logging.error(traceback.format_exc())
+		github_issue.create_issue(traceback.format_exc())
 
 if __name__ == "__main__":
 	main()
