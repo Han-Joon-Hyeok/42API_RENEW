@@ -16,12 +16,12 @@ from time import sleep
 from datetime import datetime
 import pyotp
 
-__author__ = "Arthur Trouillet"
-__credits__ = ["Arthur Trouillet"]
+__author__ = "Joonhyeok Han"
+__credits__ = ["Joonhyeok Han"]
 __license__ = "The Unlicense"
 __version__ = "1.0.0"
-__maintainer__ = "Arthur Trouillet"
-__email__ = "atrouill@student.42.fr"
+__maintainer__ = "Joonhyeok Han"
+__email__ = "joonhan@student.42.kr"
 __status__ = "Production"
 
 
