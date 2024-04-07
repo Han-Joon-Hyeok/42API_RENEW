@@ -3,17 +3,18 @@ import logging
 from github import Github
 from github import Auth
 
-import env
+from .env import config as env
 
-access_token = env.config["GITHUB_ACCESS_TOKEN"]
+ACCESS_TOKEN = env["GITHUB_ACCESS_TOKEN"]
+REPOSITORY = env["GITHUB_REPOSITORY"]
 
-auth = Auth.Token(access_token)
+auth = Auth.Token(ACCESS_TOKEN)
 
 # Public Web Github
 g = Github(auth=auth)
 
 def create_issue(message: str):
-    repo = g.get_repo("42mogle/42-api-renew-log")
+    repo = g.get_repo(REPOSITORY)
     issue = repo.create_issue(
         title="Failed to renew API secret",
         body=message,
