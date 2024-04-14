@@ -207,12 +207,12 @@ class fortytwo_auto_keys:
     def remove_modal(self):
         count = 0
         try:
-            modal = self.browser.find_element(By.CLASS_NAME, "modal-backdrop")
-            while modal:
+            modal_close_button = self.browser.find_element(By.CSS_SELECTOR, "#flashModal .modal-header .close")
+            while modal_close_button.is_displayed():
                 logging.info("find modal(count: {})".format(count))
-                modal.click()
-                sleep(0.5)
-                modal = self.browser.find_element(By.CLASS_NAME, "modal-backdrop")
+                modal_close_button.click()
+                sleep(2)
+                modal_close_button = self.browser.find_element(By.CSS_SELECTOR, "#flashModal .modal-header .close")
                 count += 1
         except NoSuchElementException:
             logging.info("modal is all removed(total count: {})".format(count))
